@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="./dist/output.css" rel="stylesheet" />
+  <title>SAE301</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.1/dist/cdn.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500;700;900&display=swap" rel="stylesheet">
+</head>
+
+<body class="relative bg-black-light text-white">
+  <nav x-data="{ open: false }" class="shadow-md">
+    <div class="container flex mx-auto justify-between items-center p-4">
+      <div class="flex flex-row items-center">
+        <a href="" class="ml-10"><img src="./assets/logo.svg" class="rounded-full" alt="Image Logo" /></a>
+      </div>
+      <a href="#" class="m-10">{{nom}}</a>
+      <button @click="open = !open" class="lg:hidden text-blue-500">
+        <div class="w-6 h-6 relative">
+          <img src="./assets/burger.svg" x-show="!open" alt="svg" />
+          <img src="./assets/x.svg" x-show="open" alt="svg" />
+        </div>
+      </button>
+      <div class="hidden lg:flex">
+        <ul class="lg:flex space-x-4 gap-3">
+          <li><a class="btn-nav" href="#">Présentation</a></li>
+          <li><a class="btn-nav" href="#">Nos Bières</a></li>
+          <li><a class="btn-nav" href="#">Location Tireuse</a></li>
+          <li><a class="btn-nav" href="#">Photos</a></li>
+          <li><a class="btn-nav" href="#">Nous contacter</a></li>
+          <li><a class="btn-red" href="#">Click & Collect</a></li>
+        </ul>
+      </div>
+    </div>
+    <div x-show="open" class="lg:hidden">
+      <ul class="flex items-end flex-col p-4 gap-6">
+        <li><a class="btn-nav" href="#">Présentation</a></li>
+        <li><a class="btn-nav" href="#">Nos Bières</a></li>
+        <li><a class="btn-nav" href="#">Location Tireuse</a></li>
+        <li><a class="btn-nav" href="#">Photos</a></li>
+        <li><a class="btn-nav" href="#">Nous contacter</a></li>
+        <li><a class="btn-red" href="#">Click & Collect </a></li>
+      </ul>
+    </div>
+  </nav>
+<a href="PageCart.html">
+  <button class="bg-white fill-black p-4 mt-5 ml-5 rounded-full hover:bg-red"><img src="./assets/fleche.svg" alt=""
+      class="h-4 md:h-8"></button>
+</a>
+  <h2 class="ml-6 mt-7 mb-10 text-xl uppercase font-bold">Votre commande</h2>
+
+  <section class="flex flex-col gap-0 mb-20">
+    <section class="flex flex-col gap-8 border-4 border-aqua mx-24">
+      <article class="flex flex-col items-center text-center md:flex-row md:items-center md:justify-between p-10">
+        <div class="flex flex-col gap-3 ml-4 md:gap-16">
+          <h3 class="font-bold text-lg"> Expédition </h3>
+          <p>Click & Collect</p>
+        </div>
+        <div class="flex flex-col gap-1 ml-4 my-4 md:gap-16">
+          <h3 class="font-bold text-lg"> Notre adresse </h3>
+          <p>23 Rue des Charmes<br>79000 Niort</p>
+        </div>
+
+        <div class="flex flex-col gap-1 my-4 ml-4 md:mr-10 md:gap-16">
+          <h3 class="font-bold text-xl"> Sous Total </h3>
+          <p class="text-2xl font-bold">{{total}}</p>
+        </div>
+      </article>
+    </section>
+  </section>
+
+  <h2 class="ml-6 mt-7 mb-10 text-xl uppercase font-bold">Paiement</h2>
+
+  <section class="flex flex-col gap-7 md:flex-row md:gap-28 items-center justify-center" id="paiement-selector">
+    <div class="flex flex-row gap-2">
+      <label class="relative inline-flex items-center cursor-pointer">
+        <input type="checkbox" id="toggle-cartebancaire" class="sr-only peer" checked>
+        <div
+          class="w-11 h-6 rounded-full peer peer-focus:ring-4 bg-gray-700 peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-1 after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-red">
+        </div>
+      </label>
+
+      <p class="text-lg">Paiement par Carte bancaire</p>
+    </div>
+
+    <div class="flex flex-row gap-2">
+      <label class="relative inline-flex items-center cursor-pointer">
+        <input type="checkbox" id="toggle-surplace" class="sr-only peer">
+        <div
+          class="w-11 h-6 rounded-full peer peer-focus:ring-4 bg-gray-700 peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-1 after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-red">
+        </div>
+      </label>
+
+      <p class="text-lg">Paiement sur place</p>
+    </div>
+  </section>
+
+  <form class="mx-auto max-w-3xl px-4 mt-12 ">
+    <div id="paiement-form">
+    <div class="mb-6">
+      <label for="numero" class="block mb-2 text-lg text-white">Numéro de la carte *</label>
+      <input type="text" id="numero"
+        class="bg-black-light border border-gray-300 text-white text-sm rounded-md focus:ring-aqua focus:border-aqua block w-full p-2.5 "
+        placeholder="XXXX XXXX XXXX XXXX">
+    </div>
+
+    <div class="grid gap-6 mb-6 grid-cols-2">
+      <div>
+        <label for="toggle-cartebancaire" class="block mb-2 text-lg text-white">Date d’expiration *</label>
+        <input type="text" id="toggle-cartebancaire"
+          class="bg-black-light border border-gray-300 text-white text-sm rounded-md focus:ring-aqua focus:border-aqua block w-full p-2.5 "
+          placeholder="MM/AA" pattern="(0[1-9]|1[0-2])/(2[2-9]|[3-9][0-9])">
+      </div>
+      <div>
+        <label for="toggle-surplace" class="block mb-2 text-lg text-white">CCV *</label>
+        <input type="text" id="toggle-surplace"
+          class="bg-black-light border border-gray-300 text-gray-300 focus:text-white text-sm rounded-md focus:ring-aqua focus:border-aqua block w-full p-2.5 date-icon"
+          placeholder="***" pattern="[0-9]{3}">
+      </div>
+    </div>
+    </div>
+    <button type="submit"
+      class="text-white bg-red hover:bg-white 
+        hover:text-red focus:ring-4 focus:outline-none focus:ring-blue-300  rounded-lg text-lg w-full px-5 py-3 text-center ">Commander</button>
+  </form>
+
+
+
+  <footer class="flex justify-center items-center py-10 bg-aqua mt-14">
+    <p>© La Chamoise</p>
+    <img class="ml-8 mr-3" src="./assets/facebook.svg" alt="">
+    <img src="./assets/twitter.svg" alt="">
+
+  </footer>
+
+  <script src="./js/paiement-select.js"></script>
+  <script src="./js/api-queries.js"></script>
+</body>
+
+</html>
