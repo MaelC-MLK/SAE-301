@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.1/dist/cdn.min.js"></script>
+
+  <title>SAE301</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500;700;900&display=swap" rel="stylesheet">
+  <link href="./dist/output.css" rel="stylesheet">
+</head>
+
+<nav x-data="{ open: false }" class="shadow-md">
+  <div class="container flex mx-auto justify-between items-center p-4">
+    <div class="flex flex-row items-center">
+      <a href="" class="ml-10"><img src="./assets/logo.svg" class="rounded-full" alt="Image Logo" /></a>
+    </div>
+    <a href="#" class="m-10">{{nom}}</a>
+    <button @click="open = !open" class="lg:hidden text-blue-500">
+      <div class="w-6 h-6 relative">
+        <img src="./assets/burger.svg" x-show="!open" alt="svg" />
+        <img src="./assets/x.svg" x-show="open" alt="svg" />
+      </div>
+    </button>
+    <div class="hidden lg:flex">
+      <ul class="lg:flex space-x-4 gap-3">
+        <li><a class="btn-nav" href="#">Présentation</a></li>
+        <li><a class="btn-nav" href="#">Nos Bières</a></li>
+        <li><a class="btn-nav" href="#">Location Tireuse</a></li>
+        <li><a class="btn-nav" href="#">Photos</a></li>
+        <li><a class="btn-nav" href="#">Nous contacter</a></li>
+        <li><a class="btn-red" href="#">Click & Collect</a></li>
+      </ul>
+    </div>
+  </div>
+  <div x-show="open" class="lg:hidden">
+    <ul class="flex items-end flex-col p-4 gap-6">
+      <li><a class="btn-nav" href="#">Présentation</a></li>
+      <li><a class="btn-nav" href="#">Nos Bières</a></li>
+      <li><a class="btn-nav" href="#">Location Tireuse</a></li>
+      <li><a class="btn-nav" href="#">Photos</a></li>
+      <li><a class="btn-nav" href="#">Nous contacter</a></li>
+      <li><a class="btn-red" href="#">Click & Collect </a></li>
+    </ul>
+  </div>
+</nav>
+
+<body class="font-roboto bg-black-light text-white">
+
+  <a href="PageClick&Collect.html">
+    <button class="bg-white fill-black p-4 mt-5 ml-5 rounded-full hover:bg-red"><img src="./assets/fleche.svg" alt=""
+        class="h-4 md:h-8"></button>
+  </a>
+
+<h2 class="text-3xl uppercase text-center mb-7 font-bold">S'inscrire</h2>
+
+  <form class="mx-auto max-w-3xl px-4">
+    <div class="grid gap-6 mb-6 grid-cols-2">
+      <div>
+        <label for="prenom" class="block mb-2 text-lg text-white">Prénom *</label>
+        <input type="text" id="prenom"
+          class="bg-black-light border border-gray-300 text-white text-sm rounded-md focus:ring-aqua focus:border-aqua block w-full p-2.5 "
+          placeholder="Votre Prénom" required>
+      </div>
+      <div>
+        <label for="nom" class="block mb-2 text-lg text-white">Nom *</label>
+        <input type="text" id="nom"
+          class="bg-black-light border border-gray-300 text-white text-sm rounded-md focus:ring-aqua focus:border-aqua block w-full p-2.5 "
+          placeholder="Votre Nom" required>
+      </div>
+    </div>
+    <div class="mb-6">
+      <label for="email" class="block mb-2 text-lg text-white">Email *</label>
+      <input type="email" id="email"
+        class="bg-black-light border border-gray-300 text-white text-sm rounded-md focus:ring-aqua focus:border-aqua block w-full p-2.5 "
+        placeholder="Votre adresse Email" required>
+    </div>
+
+    <div class="grid gap-6 mb-6 grid-cols-2">
+      <div>
+        <label for="telephone" class="block mb-2 text-lg text-white">Téléphone *</label>
+        <input type="tel" id="telephone"
+          class="bg-black-light border border-gray-300 text-white text-sm rounded-md focus:ring-aqua focus:border-aqua block w-full p-2.5 "
+          placeholder="Votre Numéro" required>
+      </div>
+      <div>
+        <label for="date" class="block mb-2 text-lg text-white">Date de naissance *</label>
+        <input type="date" id="date"
+          class="uppercase bg-black-light border border-gray-300 text-gray-300 focus:text-white text-sm rounded-md focus:ring-aqua focus:border-aqua block w-full p-2.5 date-icon"
+          placeholder="Votre Numéro" required>
+      </div>
+    </div>
+    <div class="mb-6">
+      <label for="password" class="block mb-2 text-lg text-white">Mot de Passe *</label>
+      <input type="password" id="password"
+        class="bg-black-light border border-gray-300 text-gray-300 focus:text-white text-sm rounded-md focus:ring-aqua focus:border-aqua block w-full p-2.5"
+        placeholder="Votre mot de passe" pattern=".{8,}" required >
+        <p class="text-gray-300 text-sm mt-1">Doit contenir au moins 8 caractères.</p>
+    </div>
+
+    <div class="flex items-start mb-6">
+      <div class="flex items-center h-5">
+        <input id="remember" type="checkbox" value=""
+          class="w-4 h-4 border rounded bg-gray-50 focus:ring-3  dark:bg-gray-700 border-gray-600 focus:ring-red ring-offset-gray-800"
+          required>
+      </div>
+      <label for="remember" class="ml-2 text-sm font-medium text-gray-300">J'accepte les<a
+          href="#" class="text-red hover:underline"> conditions d'utilisation</a>.</label>
+    </div>
+    <a href="PageClick&Collect.html">
+    <button type="submit"
+      class="text-white bg-red hover:bg-white 
+      hover:text-red focus:ring-4 focus:outline-none focus:ring-blue-300  rounded-lg text-lg w-full px-5 py-3 text-center">S'inscrire</button>
+    </a>
+  </form>
+
+  <p class="ml-2 text-sm font-medium text-center mt-6 mb-12">Tu as déjà un compte ? <span class="text-red hover:underline"><a href="PageConnexion.html">Connecte-toi ici.</a></span></p>
+
+
+  <footer class="flex justify-center items-center py-10 bg-aqua">
+    <p>© La Chamoise</p>
+    <img class="ml-8 mr-3" src="./assets/facebook.svg" alt="">
+    <img src="./assets/twitter.svg" alt="">
+  
+  </footer>
+
+  <script src="./js/api-queries.js"></script>
+</body>
+
+</html>
